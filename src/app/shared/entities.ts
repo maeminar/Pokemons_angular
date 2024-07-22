@@ -9,14 +9,6 @@ export interface IPokemons {
         gmax: URL | null;
     };
     types: string[];
-    stats: {
-        hp: number;
-        attack: number;
-        defense: number;
-        special_attack: number;
-        special_defense: number;
-        speed: number;
-    };
     evolution: {
         "pre-evolution": string | null;
         "evolution": string | null;

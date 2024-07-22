@@ -1,13 +1,31 @@
-<h2>Les différents pokemons</h2>
-<div>
-  @for (pokemon of pokemons; track pokemon.pokedex_id) {
-  <div class="card" style="width: 50rem">
-    <div class="card-body">
-      <h4 class="card-title">{{ pokemon.name.fr }}</h4>
-      <img [src]="pokemon.sprites.regular" alt="{{ pokemon.name.fr }}" />
-      <span>{{ pokemon.pokedex_id }}</span>
-      <button>Plus de détails ici!</button>
+<h2 class="p-5 text-center text-bg-dark">Les différents pokemons</h2>
+<div class="container">
+  <div class="row">
+    @for (pokemon of pokemons; track pokemon.pokedex_id) {
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img
+          [src]="pokemon.sprites.regular"
+          class="card-img-top"
+          alt="{{ pokemon.name.fr }}"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{ pokemon.name.fr }}</h4>
+          <p>Pokédex ID: {{ pokemon.pokedex_id }}</p>
+          @for (type of pokemon.types; track type) {
+          <p>{{ type }}</p>
+          }
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Détails
+          </button>
+        </div>
+      </div>
     </div>
+    }
   </div>
-  }
 </div>

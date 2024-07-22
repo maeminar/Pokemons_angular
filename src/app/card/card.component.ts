@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IPokemons } from '../shared/entities';
 import { PokemonService } from '../shared/pokemon.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
