@@ -15,14 +15,11 @@
           @for (type of pokemon.types; track type) {
           <p>{{ type }}</p>
           }
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            Détails
-          </button>
+          <div>
+            <a routerLink="/pokemon/{{ pokemon.pokedex_id }}"
+              >Plus de détails</a
+            >
+          </div>
         </div>
       </div>
     </div>
