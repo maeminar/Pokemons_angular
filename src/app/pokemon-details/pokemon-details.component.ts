@@ -17,12 +17,12 @@ ngOnInit(): void {
 
 service= inject(PokemonService);
 route= inject(ActivatedRoute);
-pokemon:IPokemons |undefined;
+pokemons: IPokemons[]=[]; 
 
 fetchOnePokemon() {
   const id = this.route.snapshot.paramMap.get('id');
   this.service.fetchOne(id).subscribe( data => {
-    this.pokemon = data;
+    this.pokemons = data;
   })
 }
 }
