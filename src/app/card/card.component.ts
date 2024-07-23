@@ -20,7 +20,7 @@ export class CardComponent  implements OnInit{
 
   getPokemons() {
     this.pokemonService.fetchAllBlogs().subscribe((data: IPokemons[]) => {
-      this.pokemons = data;
+      this.pokemons = data.slice(0, 20);
     });
   }
 }
