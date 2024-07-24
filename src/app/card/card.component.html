@@ -11,9 +11,10 @@
         />
         <div class="card-body">
           <h4 class="card-title">{{ pokemon.name.fr }}</h4>
-          <p>Pokédex ID: {{ pokemon.pokedex_id }}</p>
-          @for (type of pokemon.types; track type) {
-          <p>{{ type }}</p>
+          <p>Pokédex ID: {{ pokemon?.pokedex_id }}</p>
+          @for (type of pokemon?.types; track pokemons) {
+          <p>{{ type.name }}</p>
+          <img src="{{ type.image }}" alt="" />
           }
           <div>
             <a routerLink="/pokemon/{{ pokemon.pokedex_id }}"

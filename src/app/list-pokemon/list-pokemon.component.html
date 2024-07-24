@@ -1,1 +1,24 @@
-<p>list-pokemon works!</p>
+<div class="container">
+  <div class="row">
+    @for (pokemon of pokemons; track pokemon.pokedex_id) {
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img
+          [src]="pokemon.sprites.regular"
+          class="card-img-top"
+          alt="{{ pokemon.name.fr }}"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{ pokemon.name.fr }}</h4>
+          <p>Pokédex ID: {{ pokemon?.pokedex_id }}</p>
+          @for (type of pokemon?.types; track pokemons) {
+          <p>{{ type.name }}</p>
+          <img src="{{ type.image }}" alt="" />
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <a routerLink="/pokemon/{{ pokemon }}">Découvrir tous les pokémons par ici</a>
+</div>

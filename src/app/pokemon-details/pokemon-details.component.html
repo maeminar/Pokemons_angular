@@ -1,46 +1,59 @@
-<h1>Détails du pokemon {{ pokemon?.name?.fr }}</h1>
-<p>Pokedex id numéro : {{ pokemon?.pokedex_id }}</p>
-<img src="{{ pokemon?.sprites?.regular }}" alt="" />
-<div ngIf="showInfos(pokemon?.sprites?.shiny)">
-  <p>Version shiny :</p>
-  <img src="{{ pokemon?.sprites?.shiny }}" alt="" />
-</div>
-<div ngIf="showInfos(pokemon?.sprites?.gmax)">
-  <p>Version gmax:</p>
-  <img src="{{ pokemon?.sprites?.gmax }}" alt="" />
-</div>
-@for (type of pokemon?.types; track pokemon?.pokedex_id) {
-<p>{{ type.name }}</p>
-<img src="{{ type.image }}" alt="" />
-}
-<div>
-  <h2>Ses statistiques :</h2>
-  <p>HP : {{ pokemon?.stats?.hp }}</p>
-  <p>Atk : {{ pokemon?.stats?.atk }}</p>
-  <p>Def : {{ pokemon?.stats?.def }}</p>
-  <p>Spe atk : {{ pokemon?.stats?.spe_atk }}</p>
-  <p>Spe def : {{ pokemon?.stats?.spe_def }}</p>
-  <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
-</div>
-<h2>Evolution du pokemon {{ pokemon?.name?.fr }}</h2>
-<div>
-  <h3>Evolution précédente :</h3>
-  @for (pokemonpre of pokemon?.evolution?.pre; track pokemon?.pokedex_id) {
-  <p>{{ pokemonpre?.pokedex_id }}</p>
-  <p>{{ pokemonpre?.name }}</p>
-  <p>{{ pokemonpre?.condition }}</p>
-  }
-</div>
-<div>
-  @for (pokemonnext of pokemon?.evolution?.next; track pokemon?.pokedex_id) {
-  <h3>Evolution suivante :</h3>
-  <p>{{ pokemonnext?.pokedex_id }}</p>
-  <p>{{ pokemonnext?.name }}</p>
-  <p>{{ pokemonnext?.condition }}</p>
-  }
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Détails du pokemon {{ pokemon?.name?.fr }}</h1>
+  <div class="text-center m-3">
+    <p class="lead">Pokedex id numéro : {{ pokemon?.pokedex_id }}</p>
+    <img src="{{ pokemon?.sprites?.regular }}" alt="" />
+    <div ngIf="showInfos(pokemon?.sprites?.shiny)" class="mb-3">
+      <p>Version shiny :</p>
+      <img src="{{ pokemon?.sprites?.shiny }}" alt="" />
+    </div>
+    <div ngIf="showInfos(pokemon?.sprites?.gmax)" class="mb-3">
+      <p>Version gmax:</p>
+      <img src="{{ pokemon?.sprites?.gmax }}" alt="" />
+    </div>
+  </div>
+  <div class="mb-4">
+    <h2 class="text-center mb-4">Son ou ses type(s)</h2>
+    <div class="d-flex flex-wrap justify-content-center">
+      @for (type of pokemon?.types; track pokemon?.pokedex_id) {
+      <p>{{ type.name }}</p>
+      <img src="{{ type.image }}" alt="" />
+      }
+    </div>
+  </div>
+  <div class="mb-4">
+    <h2 class="text-center mb-4">Ses statistiques</h2>
+    <div class="row">
+      <p class="col-md-4">HP : {{ pokemon?.stats?.hp }}</p>
+      <p class="col-md-4">Atk : {{ pokemon?.stats?.atk }}</p>
+      <p class="col-md-4">Def : {{ pokemon?.stats?.def }}</p>
+      <p class="col-md-4">Spe atk : {{ pokemon?.stats?.spe_atk }}</p>
+      <p class="col-md-4">Spe def : {{ pokemon?.stats?.spe_def }}</p>
+      <p class="col-md-4">Vitesse: {{ pokemon?.stats?.vit }}</p>
+    </div>
+  </div>
+  <div class="mb-4">
+    <h2 class="text-center mb-4">
+      Evolution du pokemon {{ pokemon?.name?.fr }}
+    </h2>
+    <h3 class="text-center mb-4">Evolution précédente :</h3>
+    @for (pokemonpre of pokemon?.evolution?.pre; track pokemon?.pokedex_id) {
+    <p class="col-md-4">{{ pokemonpre?.pokedex_id }}</p>
+    <p class="col-md-4">{{ pokemonpre?.name }}</p>
+    <p class="col-md-4">{{ pokemonpre?.condition }}</p>
+    }
+  </div>
+  <div class="row">
+    @for (pokemonnext of pokemon?.evolution?.next; track pokemon?.pokedex_id) {
+    <h3 class="text-center mb-4">Evolution suivante :</h3>
+    <p>{{ pokemonnext?.pokedex_id }}</p>
+    <p>{{ pokemonnext?.name }}</p>
+    <p>{{ pokemonnext?.condition }}</p>
+    }
+  </div>
   <div>
     @for (pokemonmega of pokemon?.evolution?.mega; track pokemon?.pokedex_id) {
-    <h3>Evolution mega :</h3>
+    <h3 class="text-center mb-4">Evolution mega :</h3>
     <p>Orbe: {{ pokemonmega?.orbe }}</p>
     <p>Sprites: {{ pokemonmega?.sprites?.regular }}</p>
     <p>Shiny : {{ pokemonmega?.sprites?.shiny }}</p>
