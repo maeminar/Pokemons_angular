@@ -1,0 +1,24 @@
+<h1 class="text-bg-danger text-center p-5">POKEDEX</h1>
+<div class="container">
+  <div class="col-md-6">
+    <img
+      src="https://fbi.cults3d.com/uploaders/17171951/illustration-file/a4332c8b-edb9-4cb4-a98c-032e2fb58a4b/pokedex-3.jpeg"
+      alt="Sac à dos Sacha"
+      style="width: 100%; height: 300px"
+    />
+  </div>
+</div>
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <input
+    type="text"
+    [(ngModel)]="pokemonName"
+    name="pokemonName"
+    placeholder="Nom du Pokémon"
+  />
+  <button (click)="isActive = !isActive" type="submit">Chercher</button>
+</form>
+
+<div *ngIf="pokemonData">
+  <h2>{{ pokemonData.name }}</h2>
+</div>

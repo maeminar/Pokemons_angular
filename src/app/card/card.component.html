@@ -1,4 +1,8 @@
-<h2 class="p-5 text-center text-bg-dark">Les différents pokemons</h2>
+<h2 class="p-5 text-center text-bg-dark">LES POKEMONS</h2>
+<a class="btn btn-info btn-lg m-4" routerLink="/pokeball"
+  >Découvre le pokeball</a
+>
+<a class="btn btn-info btn-lg m-4" routerLink="/pokedex">Découvre le pokedex</a>
 <div class="container">
   <div class="row">
     @for (pokemon of pokemons; track pokemon.pokedex_id) {
@@ -16,10 +20,16 @@
           <p>{{ type.name }}</p>
           <img src="{{ type.image }}" alt="" />
           }
-          <div>
-            <a routerLink="/pokemon/{{ pokemon.pokedex_id }}"
+          <div class="d-flex justify-content-center">
+            <a
+              class="btn btn-outline-dark"
+              routerLink="/pokemon/{{ pokemon.pokedex_id }}"
               >Plus de détails</a
             >
+          </div>
+          <div class="d-flex justify-content-center">
+            <button (click)="addPokemon()">Add to pokeball</button>
+            <p>Nombre d'ajout : {{ compteur }}</p>
           </div>
         </div>
       </div>

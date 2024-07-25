@@ -8,21 +8,25 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
 })
 export class CardComponent implements OnInit {
-  pokemons: IPokemons[]=[]; 
+  pokemons: IPokemons[] = [];
   private pokemonService = inject(PokemonService);
   private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.getPokemon()
+    this.getPokemon();
   }
 
-  getPokemon(){
-    this.pokemonService.fetchAll().subscribe(data => {
+  getPokemon() {
+    this.pokemonService.fetchAll().subscribe((data) => {
       this.pokemons = data.slice(0, 20);
-    })
+    });
   }
 
+  compteur = 0;
+  addPokemon() {
+    this.compteur++;
+  }
 }
