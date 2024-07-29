@@ -1,4 +1,9 @@
 <h1 class="text-bg-danger text-center p-5">POKEDEX</h1>
+<div class="d-flex justify-content-center">
+  <a class="btn btn-primary mb-4" routerLink="/pokemon/"
+    >Retour vers tous les pokémons</a
+  >
+</div>
 <!-- Trier par recherche -->
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -22,24 +27,36 @@
   </div>
 </div>
 <ul class="list-group w-75" *ngIf="searchText">
-  <li *ngFor="let pokemon of pokemons | searchPokemon : searchText">
-    <h2>{{ pokemon.name.fr }}</h2>
-    <img [src]="pokemon?.sprites?.regular" />
-    <div>
-      <div *ngFor="let type of pokemon?.types">
-        <h3>Types:</h3>
-        <p>{{ type.name }}</p>
-        <img [src]="type.image" />
+  <li
+    *ngFor="let pokemon of pokemons | searchPokemon : searchText"
+    class="mb-4"
+  >
+    <div class="pokemon-card d-flex align-items-center p-3 rounded">
+      <img
+        src="https://data.pixiz.com/output/user/frame/preview/400x400/2/3/0/0/2200032_50ba6.jpg"
+        class="background-img"
+      />
+      <img [src]="pokemon?.sprites?.regular" class="pokemon-img ms-3" />
+      <div class="text flex-grow-1 ms-3">
+        <h2>{{ pokemon.name.fr }}</h2>
+        <div>
+          <div
+            *ngFor="let type of pokemon?.types"
+            class="d-flex align-items-center mb-2"
+          >
+            <img [src]="type.image" class="type-img me-2" />
+            <p class="mb-0">{{ type.name }}</p>
+          </div>
+        </div>
+        <div>
+          <p>Attaque: {{ pokemon?.stats?.atk }}</p>
+          <p>Défense: {{ pokemon?.stats?.def }}</p>
+          <p>HP: {{ pokemon?.stats?.hp }}</p>
+          <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
+          <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
+          <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
+        </div>
       </div>
-    </div>
-    <div>
-      <h3>Les statistiques</h3>
-      <p>Attaque: {{ pokemon?.stats?.atk }}</p>
-      <p>Défense: {{ pokemon?.stats?.def }}</p>
-      <p>HP: {{ pokemon?.stats?.hp }}</p>
-      <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
-      <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
-      <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
     </div>
   </li>
 </ul>

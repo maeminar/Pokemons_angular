@@ -5,11 +5,12 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IPokemons } from '../shared/entities';
 import { SearchPipe } from '../shared/search-pokemon.pipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokedex',
   standalone: true,
-  imports: [NgIf, FormsModule, CommonModule, NgFor, SearchPipe],
+  imports: [NgIf, FormsModule, CommonModule, NgFor, SearchPipe, RouterLink],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.css',
 })
@@ -24,7 +25,7 @@ export class PokedexComponent implements OnInit {
 
   getPokemon(){
     this.pokemonService.fetchAll().subscribe((data: IPokemons[]) => {
-      this.pokemons = data;
+      this.pokemons = data.slice(1 , 21);
     })
   }
 }

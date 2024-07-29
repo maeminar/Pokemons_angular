@@ -1,0 +1,30 @@
+.pokemon-card {
+  position: relative;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.background-img {
+  z-index: 0;
+  width: 80%;
+  height: auto;
+}
+
+.pokemon-img {
+  position:absolute;
+  width: 280px;
+  height: auto;
+}
+
+.text {
+  position:absolute;
+  color: rgb(0, 0, 0);
+ padding-left: 450px;
+ padding-top: 100px;
+}
+
+.type-img {
+  width: 30px;
+  height: auto;
+}
