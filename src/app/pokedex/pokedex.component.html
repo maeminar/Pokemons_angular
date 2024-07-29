@@ -21,19 +21,25 @@
     </div>
   </div>
 </div>
-<div
-  class="col-md-4 mb-4"
-  *ngFor="let pokemon of pokemons | searchPokemon : searchText : 'nom'"
->
-  <h4>{{ pokemon.name.fr }}</h4>
-</div>
-
-<div class="container">
-  <div class="col-md-6">
-    <img
-      src="https://data.pixiz.com/output/user/frame/preview/400x400/2/3/0/0/2200032_50ba6.jpg"
-      alt="POKEDEX"
-      style="width: 100%; height: 300px"
-    />
-  </div>
-</div>
+<ul class="list-group w-75" *ngIf="searchText">
+  <li *ngFor="let pokemon of pokemons | searchPokemon : searchText">
+    <h2>{{ pokemon.name.fr }}</h2>
+    <img [src]="pokemon?.sprites?.regular" />
+    <div>
+      <div *ngFor="let type of pokemon?.types">
+        <h3>Types:</h3>
+        <p>{{ type.name }}</p>
+        <img [src]="type.image" />
+      </div>
+    </div>
+    <div>
+      <h3>Les statistiques</h3>
+      <p>Attaque: {{ pokemon?.stats?.atk }}</p>
+      <p>Défense: {{ pokemon?.stats?.def }}</p>
+      <p>HP: {{ pokemon?.stats?.hp }}</p>
+      <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
+      <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
+      <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
+    </div>
+  </li>
+</ul>

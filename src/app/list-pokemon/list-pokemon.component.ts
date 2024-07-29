@@ -9,17 +9,20 @@ import { PokemonService } from '../shared/pokemon.service';
   templateUrl: './list-pokemon.component.html',
   styleUrl: './list-pokemon.component.css'
 })
-export class ListPokemonComponent implements OnInit{
-  private pokemonService = inject(PokemonService);
-  pokemons: IPokemons[]=[];
+export class ListPokemonComponent{
+pokemons: IPokemons[] = [];
+service = inject(PokemonService);
+searchText: string = ''; // Varaible pour la recherche par nom de la formation
 
-  ngOnInit(): void {
-    this.getPokemon()
-  }
+ngOnInit(): void {
+  this.searchPokemon;
+}
 
-  getPokemon(){
-    this.pokemonService.fetchAll().subscribe(data => {
-      this.pokemons = data.slice(1, 4);
-    })
-  }
+searchPokemon() {
+  this.service.fetchAll().subscribe((data) => {
+    this.pokemons = data
+      .slice(1, 20)
+      .map((pokemon) => ({ ...pokemon, isVisible: true }));
+  });
+}
 }

@@ -1,18 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { IPokemons } from './entities';
 
 @Pipe({
   name: 'searchPokemon',
   standalone: true
 })
-export class SearchPokemonPipe implements PipeTransform {
+export class SearchPipe implements PipeTransform {
+  transform(values: IPokemons[], terms: string): IPokemons[] {
+    if (!terms) {
+      return values;
+    }
 
-  transform(items: any[], searchText: string, fieldName: string): any[] {
-
-    searchText = searchText.toLowerCase();
-
-    return items.filter(it => {
-      return it[fieldName].toLowerCase().includes(searchText);
-    });
+    return values.filter((pokemon) =>
+      pokemon.name.fr.toLowerCase().includes(terms.toLowerCase()),
+    );
   }
-
 }
