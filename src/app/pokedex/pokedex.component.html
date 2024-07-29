@@ -1,14 +1,4 @@
 <h1 class="text-bg-danger text-center p-5">POKEDEX</h1>
-<div class="container">
-  <div class="col-md-6">
-    <img
-      src="https://fbi.cults3d.com/uploaders/17171951/illustration-file/a4332c8b-edb9-4cb4-a98c-032e2fb58a4b/pokedex-3.jpeg"
-      alt="POKEDEX"
-      style="width: 100%; height: 300px"
-    />
-  </div>
-</div>
-
 <!-- Trier par recherche -->
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -36,4 +26,14 @@
   *ngFor="let pokemon of pokemons | searchPokemon : searchText : 'nom'"
 >
   <h4>{{ pokemon.name.fr }}</h4>
+</div>
+
+<div class="container">
+  <div class="col-md-6">
+    <img
+      src="https://data.pixiz.com/output/user/frame/preview/400x400/2/3/0/0/2200032_50ba6.jpg"
+      alt="POKEDEX"
+      style="width: 100%; height: 300px"
+    />
+  </div>
 </div>
