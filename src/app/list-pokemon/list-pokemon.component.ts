@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IPokemons } from '../shared/entities';
 import { PokemonService } from '../shared/pokemon.service';
-import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -20,7 +19,7 @@ export class ListPokemonComponent implements OnInit{
 
   getPokemon(){
     this.pokemonService.fetchAll().subscribe(data => {
-      this.pokemons = data.slice(0, 3);
+      this.pokemons = data.slice(1, 4);
     })
   }
 }

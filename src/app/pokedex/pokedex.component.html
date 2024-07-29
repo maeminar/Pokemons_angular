@@ -3,22 +3,37 @@
   <div class="col-md-6">
     <img
       src="https://fbi.cults3d.com/uploaders/17171951/illustration-file/a4332c8b-edb9-4cb4-a98c-032e2fb58a4b/pokedex-3.jpeg"
-      alt="Sac à dos Sacha"
+      alt="POKEDEX"
       style="width: 100%; height: 300px"
     />
   </div>
 </div>
 
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-  <input
-    type="text"
-    [(ngModel)]="pokemonName"
-    name="pokemonName"
-    placeholder="Nom du Pokémon"
-  />
-  <button (click)="isActive = !isActive" type="submit">Chercher</button>
-</form>
-
-<div *ngIf="pokemonData">
-  <h2>{{ pokemonData.name }}</h2>
+<!-- Trier par recherche -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h3 class="text-center mb-4">
+        Vous recherchez un pokemon en particulier ?
+      </h3>
+      <div class="input-group mb-3 shadow-sm rounded">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchText"
+          placeholder="Rechercher un pokemon"
+          aria-label="Rechercher un pokemon"
+        />
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-search"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="col-md-4 mb-4"
+  *ngFor="let pokemon of pokemons | searchPokemon : searchText : 'nom'"
+>
+  <h4>{{ pokemon.name.fr }}</h4>
 </div>

@@ -38,5 +38,6 @@ export interface IPokemons {
         shiny?: string;
       };
     }[];
-  };
+  }; 
+  count?: number; // Ajoutez une propriété pour le compteur
 }
