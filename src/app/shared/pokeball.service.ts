@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { IPokemons } from './entities';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokeballService {
+  private pokeball: number[] = [];
 
-  private pokemonsInPokeball: IPokemons[] = [];
+  url = environment.apiURL
 
-  // Ajoute un Pokémon à la liste
-  addPokemon(pokemon: IPokemons): void {
-    if (!this.pokemonsInPokeball.find(p => p.pokedex_id === pokemon.pokedex_id)) {
-      this.pokemonsInPokeball.push(pokemon);
-    }
+  constructor(private http : HttpClient) {}
+
+  addPokemonPokeball(id: number): void {
+    this.pokeball.push(id);
   }
 
-    // Retourne tous les Pokémon ajoutés
-    getPokemons(): IPokemons[] {
-      return this.pokemonsInPokeball;
-    }
+  getPokeball(): number[] {
+    return this.pokeball;
+  }
+
+  fetchOneById(id: any) {
+    return this.http.get<IPokemons>(`${this.url}/${id}`);
+  }
 }

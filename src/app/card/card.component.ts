@@ -1,21 +1,19 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { IPokemons } from '../shared/entities';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../shared/pokemon.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { IPokemons } from '../shared/entities';
 
 @Component({
   selector: 'app-card',
-  standalone: true,
-  imports: [RouterLink, NgFor],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css',
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
   pokemons: IPokemons[] = [];
-  private pokemonService = inject(PokemonService);
-  private route = inject(ActivatedRoute);
-  pokemonCounts: number[] = []; // Tableau pour les compteurs des Pokémon
+  pokeball: any[] = [];
+  pokedex: number[] = [];
+  pokemonCounts: number[] = [];
+
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
     this.getPokemon();
@@ -28,7 +26,14 @@ export class CardComponent implements OnInit {
     });
   }
 
-  addPokemon(index: number): void {
-    this.pokemonCounts[index]++;
+  addPokemonPokedex(pokemonId: number) {
+    const selectedPokemon = this.getPokemonById(pokemonId);
+    if (selectedPokemon) {
+      this.pokeball.push(selectedPokemon);
+    }
+  }
+
+  getPokemonById(id: number) {
+    return this.pokemons.find(pokemon => pokemon.pokedex_id === id);
   }
 }

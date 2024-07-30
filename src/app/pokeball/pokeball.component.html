@@ -1,18 +1,50 @@
-<h1 class="text-bg-success text-center p-5">POKEBALL 🏀</h1>
+<!-- <h1 class="text-bg-success text-center p-5">POKEBALL 🏀</h1>
 <div class="container">
   <div class="col-md-6">
-    <img
+    @for (pokemon of pokemons; track pokemon.pokedex_id) {
+    <h2 class="pokemon-name">{{ pokemon?.name?.fr }}</h2>
+    <div
+      *ngFor="let type of pokemon?.types"
+      class="d-flex align-items-center mb-2"
+    >
+      <img [src]="type.image" class="type-img me-2" />
+      <p class="mb-0">{{ type.name }}</p>
+    </div>
+    <div>
+      <img [src]="imgUrl" alt="" />
+    </div>
+    }
+  </div>
+</div> -->
+<!-- <img
       (click)="showPokeball('pokeballName')"
       src="https://www.cdiscount.com/pdt2/2/4/6/2/700x700/ban3701405800246/rw/sac-a-dos-du-dresseur-pokemon-bandai-sasha-b.jpg"
       alt="Sac à dos Sacha"
       style="width: 50%; height: 300px"
-    />
-  </div>
-</div>
-<div>
-  <img [src]="imgUrl" alt="" />
-</div>
+    /> -->
 <!-- <img
   src="https://www.giantbomb.com/a/uploads/scale_small/9/95666/1879714-pokeball.png"
   alt=""
 /> -->
+<!-- home.component.html -->
+<div class="pokemon-list">
+  <h2>Pokémons Sélectionnés</h2>
+  <div *ngIf="pokemons.length > 0; else noPokemons">
+    <div *ngFor="let pokemon of pokemons" class="pokemon-card">
+      <h3>{{ pokemon.name }}</h3>
+      <p>Attaque: {{ pokemon?.stats?.atk }}</p>
+      <p>Défense: {{ pokemon?.stats?.def }}</p>
+      <p>HP: {{ pokemon?.stats?.hp }}</p>
+      <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
+      <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
+      <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
+      <div *ngFor="let type of pokemon.types">
+        <p>{{ type.name }}</p>
+        <img [src]="type.image" alt="" />
+      </div>
+    </div>
+  </div>
+  <ng-template #noPokemons>
+    <p>Aucun Pokémon sélectionné.</p>
+  </ng-template>
+</div>

@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PokemonService } from '../shared/pokemon.service';
 import { IPokemons } from '../shared/entities';
-import { PokeballService } from '../shared/pokeball.service'; 
 import { CommonModule, NgFor } from '@angular/common';
+import { PokeballService } from '../shared/pokeball.service';
 
 @Component({
   selector: 'app-pokeball',
@@ -21,10 +21,18 @@ export class PokeballComponent implements OnInit {
    }
 
    pokemons: IPokemons[] = [];
-   private pokeballService = inject(PokeballService);
 
-   pokemonsInPokeball: IPokemons[] = [];
+   constructor(private pokeballService: PokeballService) {}
+ 
    ngOnInit(): void {
-    this.pokemonsInPokeball = this.pokeballService.getPokemons(); // Récupérez les Pokémon depuis le service
-  }
+     const pokeball = this.pokeballService.getPokeball();
+ 
+     for (let i = 0; i < pokeball.length; i++) {
+      console.log(`Fetching Pokémon with ID: ${pokeball[i]}`);
+       this.pokeballService.fetchOneById(pokeball[i]).subscribe(pokemon => {
+         this.pokemons.push(pokemon); // Ajoute le Pokémon récupéré à la liste
+         console.log(this.pokemons); // Affiche la liste des Pokémon dans la console
+       });
+     }
+   }
   }

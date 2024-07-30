@@ -1,4 +1,4 @@
-<h2 class="p-5 text-center text-bg-dark">LES POKEMONS</h2>
+<!-- <h2 class="p-5 text-center text-bg-dark">LES POKEMONS</h2>
 <a class="btn btn-info btn-lg m-4" routerLink="/pokeball"
   >Découvre le pokeball</a
 >
@@ -27,11 +27,27 @@
             >
           </div>
           <div class="d-flex justify-content-center">
-            <button (click)="addPokemon(i)">Add to pokeball</button>
-            <p>Nombre d'ajout : {{ pokemonCounts[i] }}</p>
+            <button
+              class="btn btn-dark"
+              (click)="addPokemonPokedex(pokemon.pokedex_id)"
+            >
+              Add to pokeball
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div> -->
+<div *ngFor="let pokemon of pokemons">
+  <button (click)="addPokemonPokedex(pokemon.id)">
+    Ajouter {{ pokemon.name }} au Pokédex
+  </button>
+</div>
+
+<div>
+  <h3>Pokeball</h3>
+  <ul>
+    <li *ngFor="let pokemon of pokeball">{{ pokemon.name }}</li>
+  </ul>
 </div>

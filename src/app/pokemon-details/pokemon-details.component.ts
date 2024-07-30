@@ -22,6 +22,6 @@ pokemon: IPokemons | undefined;
 
 fetchOnePokemon() {
   const id = this.route.snapshot.paramMap.get('id');
-  this.service.fetchOne(id).subscribe((data) => (this.pokemon = data));
+  this.service.fetchOneById(id).subscribe((data) => (this.pokemon = data));
 }
 }
